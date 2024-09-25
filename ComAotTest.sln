@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComAotTest", "ComAotTest\ComAotTest.csproj", "{67B085D3-7B28-46EA-8DCC-048F419FD01A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComLibrary", "ComLibrary\ComLibrary.csproj", "{63FD4449-EE68-464E-89CD-EFB351E80FE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67B085D3-7B28-46EA-8DCC-048F419FD01A}.Debug|x64.ActiveCfg = Debug|x64
+		{67B085D3-7B28-46EA-8DCC-048F419FD01A}.Debug|x64.Build.0 = Debug|x64
+		{67B085D3-7B28-46EA-8DCC-048F419FD01A}.Release|x64.ActiveCfg = Release|x64
+		{67B085D3-7B28-46EA-8DCC-048F419FD01A}.Release|x64.Build.0 = Release|x64
+		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Debug|x64.ActiveCfg = Debug|x64
+		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Debug|x64.Build.0 = Debug|x64
+		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Release|x64.ActiveCfg = Release|x64
+		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE7AA81A-0A61-47BB-9439-FA33BECC6BBB}
+	EndGlobalSection
+EndGlobal
