@@ -1,11 +1,30 @@
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace ComLibrary;
 
+public static class DllMain
+{
+    internal static StrategyBasedComWrappers ComWrappers { get; } = new();
+
+    [UnmanagedCallersOnly(EntryPoint = nameof(DllGetAllObject))]
+    private static unsafe int DllGetAllObject(Guid* riid, void*** pppv, int* count)
+    {
+        var server = new Server();
+        var ccwUnknown = (void*)ComWrappers.GetOrCreateComInterfaceForObject(server, CreateComInterfaceFlags.None);
+        *count = 1;
+        var x = (void**)Marshal.AllocHGlobal(sizeof(nint));
+        *pppv = x;
+        (*pppv)[0] = ccwUnknown;
+        return 0;
+    }
+}
+
+
 [ComVisible(true)]
 [Guid("3CF457CD-4383-4B36-8380-05C259F4E40F")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public interface IServer
+[GeneratedComInterface]
+public partial interface IServer
 {
     /// <summary>
     /// Compute the value of the constant Pi.
@@ -14,9 +33,9 @@ public interface IServer
 }
 
 [ComVisible(true)]
-[ClassInterface(ClassInterfaceType.None)]
 [Guid("07A2382E-7A22-4912-B2D7-85F7C4F9109D")]
-public class Server : IServer
+[GeneratedComClass]
+public partial class Server : IServer
 {
     public double ComputePi()
     {
@@ -27,6 +46,8 @@ public class Server : IServer
             sum += sign / (2.0 * i + 1.0);
             sign *= -1;
         }
+        
+        Console.WriteLine("COM: " + RuntimeInformation.FrameworkDescription);
 
         return 4.0 * sum;
     }
