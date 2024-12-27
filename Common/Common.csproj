@@ -1,16 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <IsTrimmable>true</IsTrimmable>
+        <IsAotCompatible>true</IsAotCompatible>
+        <LangVersion>preview</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PublishAot>true</PublishAot>
-        <Platforms>x64</Platforms>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Common\Common.csproj" />
-    </ItemGroup>
 
 </Project>

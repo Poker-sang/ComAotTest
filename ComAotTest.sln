@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComAotTest", "ComAotTest\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComLibrary", "ComLibrary\ComLibrary.csproj", "{63FD4449-EE68-464E-89CD-EFB351E80FE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{096309AA-C389-4233-A460-14B74B72505A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -20,6 +22,10 @@ Global
 		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Debug|x64.Build.0 = Debug|x64
 		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Release|x64.ActiveCfg = Release|x64
 		{63FD4449-EE68-464E-89CD-EFB351E80FE4}.Release|x64.Build.0 = Release|x64
+		{096309AA-C389-4233-A460-14B74B72505A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{096309AA-C389-4233-A460-14B74B72505A}.Debug|x64.Build.0 = Debug|Any CPU
+		{096309AA-C389-4233-A460-14B74B72505A}.Release|x64.ActiveCfg = Release|Any CPU
+		{096309AA-C389-4233-A460-14B74B72505A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
