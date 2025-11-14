@@ -6,15 +6,14 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using Common;
-using static Win32NativeMethods;
 
 unsafe
 {
     Console.WriteLine($"Program: {RuntimeInformation.FrameworkDescription}, {(RuntimeFeature.IsDynamicCodeCompiled ? "JIT" : "AOT")}");
     Console.WriteLine();
-    const string path = @"..\..\..\..\..\ComLibrary\bin\x64\Release\net9.0\publish\win-x64\ComLibrary.dll";
-    var dllHandle = LoadLibrary(path);
-    var dllGetAllObjectPtr = GetProcAddress(dllHandle, nameof(DllGetAllObject));
+    const string path = @"..\..\..\..\..\ComLibrary\bin\x64\Release\net10.0\publish\win-x64\ComLibrary.dll";
+    var dllHandle = NativeLibrary.Load(path);
+    var dllGetAllObjectPtr = NativeLibrary.GetExport(dllHandle, nameof(DllGetAllObject));
     var dllGetAllObject = Marshal.GetDelegateForFunctionPointer<DllGetAllObject>(dllGetAllObjectPtr);
     var classFactoryGuid = typeof(IServer).GUID;
     var x = dllGetAllObject(classFactoryGuid, out var pppv, out var objectCount);
@@ -31,8 +30,7 @@ unsafe
     Console.WriteLine(rcw is ServerBase);
 
     // 普通封送测试
-    var c = server2.GetCount();
-    var arr = server2.GetServer(c);
+    var arr = server2.GetServer(out var count);
     var server = arr[0];
     CultureInfo.CurrentUICulture = new("en-US");
     server.Culture(CultureInfo.CurrentUICulture.ToString());
@@ -68,15 +66,6 @@ unsafe
     Console.WriteLine(readonlyIoStream.CanSeek);
     Console.WriteLine(readonlyIoStream.CanWrite);
     return 0;
-}
-
-public static partial class Win32NativeMethods
-{
-    [LibraryImport("kernel32.dll", EntryPoint = "LoadLibraryW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
-    public static partial nint LoadLibrary(string libFilename);
-
-    [LibraryImport("kernel32.dll", SetLastError = true)]
-    public static partial nint GetProcAddress(nint hModule, [MarshalAs(UnmanagedType.LPStr)] string lpProcName);
 }
 
 public unsafe delegate int DllGetAllObject(in Guid iId, [Out] out nint* pppv, [Out] out int count);

@@ -12,15 +12,8 @@ public partial interface IServer2
     /// <summary>
     /// 获取数组和COM复杂类型示例
     /// </summary>
-    [return: MarshalUsing(CountElementName = nameof(num))]
-    IServer[] GetServer(int num);
-
-    /// <summary>
-    /// 获取数组长度
-    /// </summary>
-#pragma warning disable SYSLIB1092
-    int GetCount();
-#pragma warning restore SYSLIB1092
+    [return: MarshalUsing(CountElementName = nameof(count))]
+    IServer[] GetServer(out int count);
 }
 
 [ComVisible(true)]
@@ -94,10 +87,14 @@ public abstract partial class ServerBase : IServer, IServer2
     public abstract string? StringNullTest();
 
     /// <inheritdoc />
-    public abstract int GetCount();
+    public IServer[] GetServer(out int count)
+    {
+        var result = Server;
+        count = result.Length;
+        return result;
+    }
 
-    /// <inheritdoc />
-    public abstract IServer[] GetServer(int num);
+    public abstract IServer[] Server { get; }
 }
 
 public enum TestEnum

@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="ComAotTest/ComAotTest.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="ComLibrary/ComLibrary.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Common/Common.csproj" />
+</Solution>
